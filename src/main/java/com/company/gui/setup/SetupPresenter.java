@@ -1,6 +1,6 @@
 package com.company.gui.setup;
 
-import com.company.StageController;
+import com.company.gui.StageController;
 import com.company.gui.inProgress.InProgressView;
 import com.company.services.CSVReader;
 import com.company.services.SetRating;

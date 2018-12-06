@@ -1,6 +1,6 @@
 package com.company.gui;
 
-import com.company.StageController;
+import com.company.gui.StageController;
 
 public class Main {
 

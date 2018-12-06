@@ -5,7 +5,7 @@ import com.company.services.Driver;
 import com.company.services.SetRating;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class InProgressPresenter {
     @FXML
     TextArea outputSuccess;
     @FXML
-    ProgressBar progress;
+    Label progress;
 
     static int SizeOfArray;
     int currentlyFinished;
@@ -30,7 +30,11 @@ public class InProgressPresenter {
     }
 
     public void onAbort(){
-
+        if (Driver.driver != null) {
+            Driver.driver.quit();
+        }
+        Platform.exit();
+        System.exit(0);
     }
 
     public void setSizeOfArray(int size){
@@ -38,9 +42,8 @@ public class InProgressPresenter {
     }
 
     public void setProgressBar(){
-        currentlyFinished = currentlyFinished+1;
-        double progress1 = currentlyFinished/SizeOfArray;
-        progress.setProgress(progress1);
+        currentlyFinished = currentlyFinished +1;
+        progress.setText(currentlyFinished +" / "+ SizeOfArray);
     }
 
     public void updateOutputFailure(String Meldung){

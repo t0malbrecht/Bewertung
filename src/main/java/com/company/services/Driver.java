@@ -1,39 +1,40 @@
 package com.company.services;
 
-import java.lang.reflect.InvocationTargetException;
+import java.io.*;
+import java.net.URL;
 import java.util.List;
 import java.util.Arrays;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class Driver {
 
     private static List<String> list;
-    private WebDriver driver;
+    public static WebDriver driver;
     private JavascriptExecutor js;
     private int index;
     private String XPath;
 
-        public void setUp(){
-            System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-            driver = new ChromeDriver();
-            js = (JavascriptExecutor) driver;
-        }
+    public void setUp(){
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-gpu");
+        options.addArguments("--headless");
 
+        driver = new ChromeDriver(options);
+        js = (JavascriptExecutor) driver;
+        driver.get("http://www.get-myip.com/");
+    }
 
     public void getPage() throws InterruptedException{
         driver.get(list.get(index));

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.gui;
 
 import com.company.gui.setup.SetupView;
 import javafx.application.Application;
@@ -29,7 +29,7 @@ public class StageController extends Application {
         Scene scene = new Scene(setupScreen.getView());
         this.scene = scene;
         window.setScene(scene);
-        window.setTitle("ScotlandYard");
+        window.setTitle("Bewertung");
         window.show();
 
     }

@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class CSVReader {
     private static String CSV_FILE_PATH;
@@ -35,6 +36,7 @@ public class CSVReader {
                 list.add(csvRecord.get("URL"));
             }
         }
+        Collections.shuffle(list);
         return list;
     }
 
